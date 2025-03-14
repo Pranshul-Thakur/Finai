@@ -15,10 +15,9 @@ class user(db.Model):
 class portfolio(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    stock_symbol = db.Column(db.String(10), nullable=False)
+    stock_name = db.Column(db.String(10), nullable=False)
     buy_price = db.Column(db.Float, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
-    buy_date = db.Column(db.DateTime, default=datetime.utcnow)
     
     def __repr__(self):
-        return f'<Portfolio {self.stock_symbol} for User {self.user_id}>'
+        return f'<Portfolio {self.stock_name} - {self.quantity} shares>'
